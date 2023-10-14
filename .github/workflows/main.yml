@@ -11,6 +11,9 @@ jobs:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
     
+    - name: 🚫 Remove .github folder
+      run: rm -rf .github
+      
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
@@ -18,7 +21,5 @@ jobs:
         username: alunossistoledo
         password: ${{ secrets.ftp_password }}
         server-dir: gustavo/
-        exclude: |
-          /.git*
-          /.git*/**
+        
     
