@@ -17,5 +17,5 @@ jobs:
         server: ftp.alunossistoledo.kinghost.net
         username: alunossistoledo
         password: ${{ secrets.ftp_password }}
-        server-dir: /www/gustavo
+        server-dir: www/gustavo
     
