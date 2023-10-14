@@ -1,18 +1,15 @@
 on: 
-    push:
+    workflow_dispatch:
         branches:
             - main
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
     name: 🎉 Deploy
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - name: 🚚 Get latest code
       uses: actions/checkout@v3
-    
-    - name: 🚫 Remove .github folder
-      run: rm -rf .github
 
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -20,6 +17,6 @@ jobs:
         server: ftp.alunossistoledo.kinghost.net
         username: alunossistoledo
         password: Si123456
-        server-dir: /www/gustavo/
-        local-dir: ./
+        server-dir: gustavo/
+
     
