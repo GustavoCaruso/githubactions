@@ -1,25 +1,24 @@
-on: 
-    push:
-        branches:
-            - main
-name: 🚀 Deploy website on push
+name: Deploy to King Host FTP
+
+on:
+  push:
+    branches:
+      - main 
+
 jobs:
-  web-deploy:
-    name: 🎉 Deploy
+  deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v3
-    
-    - name: 🚫 Remove .github folder
-      run: rm -rf .github
+    - name: Checkout the repo
+      uses: actions/checkout@v2
 
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+    - name: FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
         server: ftp.alunossistoledo.kinghost.net
         username: alunossistoledo
         password: Si123456
-        server-dir: public_html/www/gustavo/
+        server-dir: /gustavo/
+        local-dir: ./ # diretório local a ser implantado
         
     
